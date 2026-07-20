@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+  Kvell dental lab ウェブサイト ver.1
+  ================================================
+  【このファイルの役割】
+  HTML は「ページの中身と構造」を書くファイルです。
+  見た目（色・大きさ・配置）は style.css、動き（スクロール時の表示など）は script.js が担当します。
+
+  【編集の仕方】
+  「▼編集ポイント」というコメントの下のテキストを書き換えるだけで内容を更新できます。
+  「※仮」と書いてある箇所は、山口さんに確認してから差し替える前提のダミーです。
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- スマホで正しく表示するためのおまじない -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 検索結果やタブに表示されるタイトルと説明文 -->
+  <title>Kvell dental lab | 北海道札幌の歯科技工所</title>
+  <meta name="description" content="北海道札幌の歯科技工所 Kvell dental lab。セラミック補綴・インプラント補綴を中心に、口元全体との調和を意識した補綴物を製作しています。">
+
+  <!-- Google Fonts: 見出し用の明朝体と本文用のゴシック体を読み込む -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- 見た目の設定ファイルを読み込む -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ ヘッダー（画面上部に固定されるナビゲーション） ============ -->
+  <header class="site-header">
+    <a href="#top" class="header-logo">KVELL <span>DENTAL LAB</span></a>
+    <nav class="header-nav">
+      <a href="#about">私たちについて</a>
+      <a href="#services">業務内容</a>
+      <a href="#works">症例</a>
+      <a href="#profile">技工士紹介</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+    <!-- スマホ用のメニューボタン（三本線） -->
+    <button class="nav-toggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ============ ヒーロー（最初に目に入る大きなエリア） ============ -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">DENTAL LABORATORY ・ SAPPORO</p>
+      <!-- ▼編集ポイント: 屋号とキャッチコピー -->
+      <h1 class="hero-title">KVELL<br>DENTAL LAB</h1>
+      <p class="hero-lead">口元全体との調和を見据えた、<br class="sp-only">精密な歯科技工。</p>
+      <div class="hero-line"></div>
+      <p class="hero-sub">セラミック補綴・インプラント補綴</p>
+    </div>
+    <!-- 下にスクロールできることを示す小さな表示 -->
+    <div class="scroll-hint"><span></span>SCROLL</div>
+  </section>
+
+  <!-- ============ 私たちについて ============ -->
+  <section class="section" id="about">
+    <div class="section-inner fade-in">
+      <p class="section-label">ABOUT</p>
+      <h2 class="section-title">私たちについて</h2>
+      <!-- ▼編集ポイント: 技工所の紹介文（本人提供の文章がベース） -->
+      <p class="about-text">
+        Kvell dental lab は、北海道札幌の歯科技工所です。<br>
+        主にセラミック補綴およびインプラント補綴を担当しています。<br>
+        形態や色調のバランスを考慮し、口元全体との調和を意識した補綴物の製作を行っています。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 業務内容 ============ -->
+  <section class="section section-dark" id="services">
+    <div class="section-inner fade-in">
+      <p class="section-label">SERVICES</p>
+      <h2 class="section-title">業務内容</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <p class="service-num">01</p>
+          <h3>セラミック補綴</h3>
+          <!-- ▼編集ポイント: 各業務の説明文 -->
+          <p>天然歯との調和を重視したセラミック修復物の製作。形態・色調のバランスを一歯ごとに検討し、口元全体の中で自然に馴染む仕上がりを目指します。</p>
+        </div>
+        <div class="service-card">
+          <p class="service-num">02</p>
+          <h3>インプラント補綴</h3>
+          <p>インプラント上部構造の設計・製作。長期的な安定と清掃性、そして審美性の両立を意識した補綴物をお届けします。</p>
+        </div>
+        <div class="service-card">
+          <p class="service-num">03</p>
+          <h3>その他のご相談 <small>※仮</small></h3>
+          <p>対応可能な補綴の範囲・使用材料・納期などの詳細は現在準備中です。お気軽にお問い合わせください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 症例ギャラリー ============ -->
+  <section class="section" id="works">
+    <div class="section-inner fade-in">
+      <p class="section-label">WORKS</p>
+      <h2 class="section-title">症例</h2>
+      <p class="section-note">※現在は仮の枠です。Instagram の症例写真と差し替え予定。</p>
+      <!-- ▼編集ポイント: 写真が用意できたら <div class="work-placeholder"> を <img src="写真ファイル名"> に置き換える -->
+      <div class="works-grid">
+        <div class="work-placeholder"><span>症例写真 01<br>（差し替え予定）</span></div>
+        <div class="work-placeholder"><span>症例写真 02<br>（差し替え予定）</span></div>
+        <div class="work-placeholder"><span>症例写真 03<br>（差し替え予定）</span></div>
+        <div class="work-placeholder"><span>症例写真 04<br>（差し替え予定）</span></div>
+      </div>
+      <p class="works-ig">
+        最新の症例は Instagram でご覧いただけます。<br>
+        <a href="https://www.instagram.com/kvell_dental_lab" target="_blank" rel="noopener" class="btn-gold">Instagram を見る</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 技工士紹介 ============ -->
+  <section class="section section-dark" id="profile">
+    <div class="section-inner fade-in">
+      <p class="section-label">PROFILE</p>
+      <h2 class="section-title">技工士紹介</h2>
+      <div class="profile-wrap">
+        <!-- ▼編集ポイント: 写真が用意できたらこの枠を <img> に置き換える -->
+        <div class="profile-photo"><span>ポートレート写真<br>（差し替え予定）</span></div>
+        <div class="profile-body">
+          <p class="profile-role">歯科技工士</p>
+          <h3 class="profile-name">山口 尊銘養</h3>
+          <!-- ▼編集ポイント: 本人の言葉・経歴（経歴は未確認のため未掲載） -->
+          <p class="profile-text">
+            主にセラミック補綴およびインプラント補綴を担当しています。
+            形態や色調のバランスを考慮し、口元全体との調和を意識した補綴物の製作を行っています。
+          </p>
+          <p class="profile-note">※経歴・保有資格は本人確認後に掲載予定です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ご依頼の流れ（歯科医院向け） ============ -->
+  <section class="section" id="flow">
+    <div class="section-inner fade-in">
+      <p class="section-label">FLOW</p>
+      <h2 class="section-title">ご依頼の流れ <small class="title-note">※仮</small></h2>
+      <p class="section-note">歯科医院さまからのご依頼を想定した流れの例です。実際の運用は確認のうえ更新します。</p>
+      <ol class="flow-list">
+        <li><span class="flow-step">01</span><div><h3>ご相談</h3><p>Instagram の DM またはお電話にてお気軽にご連絡ください。</p></div></li>
+        <li><span class="flow-step">02</span><div><h3>症例の共有</h3><p>印象・口腔内写真・シェード情報などをご共有いただきます。</p></div></li>
+        <li><span class="flow-step">03</span><div><h3>製作</h3><p>形態・色調を検討しながら補綴物を製作します。</p></div></li>
+        <li><span class="flow-step">04</span><div><h3>納品</h3><p>ご指定の方法で納品します。調整のご相談にも対応します。</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ お問い合わせ ============ -->
+  <section class="section section-dark" id="contact">
+    <div class="section-inner fade-in">
+      <p class="section-label">CONTACT</p>
+      <h2 class="section-title">お問い合わせ</h2>
+      <p class="contact-text">
+        ご依頼・ご相談は Instagram の DM よりお願いいたします。
+      </p>
+      <a href="https://www.instagram.com/kvell_dental_lab" target="_blank" rel="noopener" class="btn-gold">Instagram で連絡する</a>
+      <!-- ▼編集ポイント: 住所・電話番号・メールが確定したらここに追記 -->
+      <p class="contact-note">所在地・電話番号などの詳細は確認後に掲載予定です。</p>
+    </div>
+  </section>
+
+  <!-- ============ フッター（ページ最下部） ============ -->
+  <footer class="site-footer">
+    <p class="footer-logo">KVELL DENTAL LAB</p>
+    <p class="footer-place">Sapporo, Hokkaido, Japan</p>
+    <p class="footer-copy">&copy; 2026 Kvell dental lab</p>
+  </footer>
+
+  <!-- 動きの設定ファイルを読み込む（body の最後に置くのが定石） -->
+  <script src="script.js"></script>
+</body>
+</html>

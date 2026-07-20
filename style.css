@@ -1,0 +1,404 @@
+/*
+  Kvell dental lab スタイルシート ver.1
+  ================================================
+  【このファイルの役割】
+  CSS は「見た目」を決めるファイルです。色・文字・余白・配置をここで指定します。
+
+  【読み方の基本】
+  .service-card { color: red; } と書くと、
+  HTML の class="service-card" が付いた要素の文字色が赤になります。
+
+  【デザインの決めごと（ダーク×プレミアム）】
+  背景: ほぼ黒 / 文字: 生成り色 / アクセント: 金 / 見出し: 明朝体
+  色は下の :root にまとめてあるので、ここを変えると全体が変わります。
+*/
+
+/* ---- サイト全体で使う色と書体の定義 ---- */
+:root {
+  --bg: #0e0e10;            /* 基本の背景色（ほぼ黒） */
+  --bg-alt: #16161a;        /* 少し明るい背景色（交互のセクション用） */
+  --text: #e9e5dc;          /* 基本の文字色（生成り） */
+  --text-dim: #97928a;      /* 控えめな文字色（補足用） */
+  --gold: #c9a962;          /* アクセントの金色 */
+  --line: rgba(201, 169, 98, 0.35); /* 金色の薄い線 */
+  --serif: "Shippori Mincho", "Hiragino Mincho ProN", serif;      /* 見出し用の明朝体 */
+  --latin: "Cormorant Garamond", serif;                            /* 欧文ロゴ用 */
+  --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif; /* 本文用ゴシック体 */
+}
+
+/* ---- リセット（ブラウザ標準の余白を消して統一する） ---- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; } /* ページ内リンクをなめらかにスクロール */
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.06em;
+}
+
+/* ================= ヘッダー ================= */
+.site-header {
+  position: fixed;            /* スクロールしても上部に固定 */
+  top: 0; left: 0; right: 0;
+  z-index: 100;               /* 他の要素より手前に表示 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: rgba(14, 14, 16, 0.85);
+  backdrop-filter: blur(8px); /* 背景をすりガラス風にぼかす */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header-logo {
+  font-family: var(--latin);
+  font-size: 1.25rem;
+  letter-spacing: 0.22em;
+  color: var(--text);
+  text-decoration: none;
+}
+.header-logo span { color: var(--gold); }
+
+.header-nav { display: flex; gap: 28px; }
+.header-nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.3s;     /* 色の変化を0.3秒かけてなめらかに */
+}
+.header-nav a:hover { color: var(--gold); }
+
+/* スマホ用メニューボタン（普段は隠し、画面が狭いときだけ表示） */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.nav-toggle span {
+  width: 22px; height: 1px;
+  background: var(--text);
+  display: block;
+}
+
+/* ================= ヒーロー ================= */
+.hero {
+  min-height: 100vh;          /* 画面の高さいっぱいに広げる */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  /* 黒地に金がほのかに差す背景。写真が入るまでのグラデーション */
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 40%, rgba(201, 169, 98, 0.10), transparent 70%),
+    linear-gradient(180deg, #0e0e10 0%, #131318 60%, #0e0e10 100%);
+}
+
+.hero-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+
+.hero-title {
+  font-family: var(--latin);
+  font-weight: 500;
+  font-size: clamp(3rem, 9vw, 6.5rem); /* 画面幅に応じて文字サイズを自動調整 */
+  letter-spacing: 0.18em;
+  line-height: 1.15;
+}
+
+.hero-lead {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2.4vw, 1.35rem);
+  margin-top: 36px;
+  letter-spacing: 0.18em;
+}
+
+.hero-line {
+  width: 1px; height: 64px;
+  background: var(--line);
+  margin: 36px auto;
+}
+
+.hero-sub {
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--text-dim);
+}
+
+/* 画面下の SCROLL 表示 */
+.scroll-hint {
+  position: absolute;
+  bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  color: var(--text-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.scroll-hint span {
+  width: 1px; height: 36px;
+  background: var(--line);
+  animation: scrollPulse 2s infinite; /* 下で定義したアニメーションを繰り返す */
+}
+@keyframes scrollPulse {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ================= セクション共通 ================= */
+.section { padding: 110px 32px; }
+.section-dark { background: var(--bg-alt); }
+
+.section-inner { max-width: 960px; margin: 0 auto; }
+
+.section-label {
+  font-family: var(--latin);
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  letter-spacing: 0.14em;
+  margin-bottom: 44px;
+  position: relative;
+  padding-bottom: 20px;
+}
+/* 見出しの下の短い金線 */
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 48px; height: 1px;
+  background: var(--gold);
+}
+.title-note { font-size: 0.65em; color: var(--text-dim); font-family: var(--sans); }
+
+.section-note {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin: -24px 0 36px;
+}
+
+/* ================= 私たちについて ================= */
+.about-text {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 2.6;
+  letter-spacing: 0.1em;
+}
+
+/* ================= 業務内容 ================= */
+.services-grid {
+  display: grid;                                  /* カードを格子状に並べる */
+  grid-template-columns: repeat(3, 1fr);          /* 3等分の列 */
+  gap: 28px;
+}
+
+.service-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px 30px;
+  transition: border-color 0.4s;
+}
+.service-card:hover { border-color: var(--line); }
+
+.service-num {
+  font-family: var(--latin);
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.service-card h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+}
+.service-card h3 small { font-size: 0.7em; color: var(--text-dim); }
+.service-card p { font-size: 0.85rem; color: var(--text-dim); }
+
+/* ================= 症例 ================= */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* 写真が入るまでの仮枠 */
+.work-placeholder {
+  aspect-ratio: 1;            /* 正方形を保つ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  background: linear-gradient(135deg, #1a1a1f 0%, #121215 100%);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.works-ig {
+  margin-top: 44px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+/* 金色の枠ボタン（Instagram への誘導） */
+.btn-gold {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 14px 44px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  transition: background 0.4s, color 0.4s;
+}
+.btn-gold:hover { background: var(--gold); color: #0e0e10; }
+
+/* ================= 技工士紹介 ================= */
+.profile-wrap {
+  display: grid;
+  grid-template-columns: 300px 1fr;  /* 左に写真、右に文章 */
+  gap: 48px;
+  align-items: start;
+}
+
+.profile-photo {
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  background: linear-gradient(135deg, #1a1a1f 0%, #121215 100%);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.profile-role {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.profile-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.7rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 24px;
+}
+.profile-text { font-size: 0.92rem; color: var(--text); }
+.profile-note { margin-top: 20px; font-size: 0.75rem; color: var(--text-dim); }
+
+/* ================= ご依頼の流れ ================= */
+.flow-list { list-style: none; }
+.flow-list li {
+  display: flex;
+  gap: 28px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  align-items: baseline;
+}
+.flow-step {
+  font-family: var(--latin);
+  color: var(--gold);
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  flex-shrink: 0;
+}
+.flow-list h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+.flow-list p { font-size: 0.85rem; color: var(--text-dim); }
+
+/* ================= お問い合わせ ================= */
+#contact .section-inner { text-align: center; }
+#contact .section-title { padding-bottom: 20px; }
+#contact .section-title::after { left: 50%; transform: translateX(-50%); }
+.contact-text { font-family: var(--serif); font-size: 1rem; margin-bottom: 10px; }
+.contact-note { margin-top: 28px; font-size: 0.75rem; color: var(--text-dim); }
+
+/* ================= フッター ================= */
+.site-footer {
+  text-align: center;
+  padding: 64px 32px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.footer-logo {
+  font-family: var(--latin);
+  letter-spacing: 0.3em;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.footer-place { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.2em; }
+.footer-copy { margin-top: 24px; font-size: 0.7rem; color: var(--text-dim); }
+
+/* ================= スクロールで浮かび上がる演出 =================
+   script.js が画面に入った要素へ .visible を付け、ふわっと表示させる */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= スマホ対応（画面幅 768px 以下で適用） ================= */
+.sp-only { display: none; } /* スマホ専用の改行はパソコンでは非表示 */
+
+@media (max-width: 768px) {
+  .sp-only { display: inline; }
+
+  /* ナビはメニューボタン式に切り替え */
+  .header-nav {
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(14, 14, 16, 0.97);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: none;            /* 普段は隠す（ボタンで開閉） */
+  }
+  .header-nav.open { display: flex; }
+  .header-nav a { padding: 16px 32px; border-top: 1px solid rgba(255,255,255,0.05); }
+  .nav-toggle { display: flex; }
+
+  .section { padding: 80px 24px; }
+  .services-grid { grid-template-columns: 1fr; }       /* カードは縦1列に */
+  .works-grid { grid-template-columns: repeat(2, 1fr); } /* 症例は2列に */
+  .profile-wrap { grid-template-columns: 1fr; }        /* 写真と文章を縦並びに */
+  .profile-photo { width: min(280px, 75vw); margin: 0 auto; }
+}

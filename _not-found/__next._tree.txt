@@ -1,0 +1,5 @@
+:HL["/kvell-dental-lab/_next/static/chunks/1tza8_sj8vp9q.css","style"]
+:HL["/kvell-dental-lab/_next/static/chunks/1e383s35wljwt.css","style"]
+:HL["/kvell-dental-lab/_next/static/chunks/3fc7t28k_7p3-.css","style"]
+:HL["/kvell-dental-lab/_next/static/chunks/1f15yn8sv67d_.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"HdGclZPuw8Gk5XzHQ6FFA"}
